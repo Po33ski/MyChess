@@ -54,7 +54,7 @@ public:
 		int counter() { return m++; };
 		figure* copy_figure() { return new figure(*this); } // It's kind of copy constructor (but it's not the constructor). it's allow the deep copy of object
 		void save_in_memory(board_vector& board, memory_vector& memory_of_game);
-		virtual void move(char lf, char ls, int nf, int ns, board_vector& board, memory_vector& memory_of_game, figure_list& beaten, bool& mat, bool & turn) { };
+		virtual void move(char lf, char ls, int nf, int ns, board_vector& board, memory_vector& memory_of_game, figure_list& beaten, bool& mat, bool& turn) { };
 
 	};
 
@@ -137,7 +137,7 @@ public:
 	void show_beaten(); // unpacking of lost_pieces
 	void show_memory(); // unpacking of memory_of_game
 	void set_figure(char name, std::vector<figure*>& row); // In this void I create the new figure 
-	bool check_color(char lf, int nf, char col); // Check of color of piece
+	bool check_color(char lf, int nf, char col, char col2); // Check of color of piece
 	void save(); // Saving to txt file 
 	void load(); // loading from txt file
 

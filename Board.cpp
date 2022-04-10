@@ -490,6 +490,7 @@ struct conv_type {
 //They are almost the same, but I have separated them for convenience
 void Board::play_black() {
 	char color = 'b';
+	char color2 = 'w';
 	std::string Nf; std::string Ns;
 	std::string Lf; std::string Ls;
 	this->turn = false;
@@ -501,10 +502,10 @@ void Board::play_black() {
 		conv_type test(Lf, Ls, Nf, Ns);
 
 		if (check_sign(test.lf, test.ls, test.nf, test.ns) == true
-			&& this->check_color(test.lf, test.nf, color) == true)
+			&& this->check_color(test.lf, test.nf, color, color2) == true)
 		{
-			this->set_move(test.lf, test.ls, test.nf, test.ns);
 			this->turn = true;
+			this->set_move(test.lf, test.ls, test.nf, test.ns);
 		}
 		else
 		std::cout << "You wrote smth wrong!" << std::endl;
@@ -513,6 +514,7 @@ void Board::play_black() {
 
 void Board::play_white() {
 	char color = 'w';
+	char color2 = 'b';
 	std::string Nf; std::string Ns;
 	std::string Lf; std::string Ls;
 	this->turn = false;
@@ -524,10 +526,11 @@ void Board::play_white() {
 		conv_type test(Lf, Ls, Nf, Ns);
 
 		if (check_sign(test.lf, test.ls, test.nf, test.ns) == true
-			&& this->check_color(test.lf, test.nf, color) == true)
+			&& this->check_color(test.lf, test.nf, color, color2) == true)
 		{
-			this->set_move(test.lf, test.ls, test.nf, test.ns);
 			this->turn = true;
+			this->set_move(test.lf, test.ls, test.nf, test.ns);
+			
 		}
 		else
 		std::cout << "You wrote smth wrong!" << std::endl;
@@ -608,11 +611,11 @@ void Board::show_memory() {
 	else std::cout << "The container is empty" << std::endl;
 }
 
-bool Board::check_color(char lf, int nf, char col) {
+bool Board::check_color(char lf, int nf, char col, char col2) {
 	int i = nf - 1;
 	int j = conv(lf) - 1;
 	bool ret = true;
-	this->board[i][j]->figure_color == col ? ret = true : ret = false;
+	this->board[i][j]->figure_color == col && col != col2 ? ret = true : ret = false;
 	return ret;
 }
 
