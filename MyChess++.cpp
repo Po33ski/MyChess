@@ -33,6 +33,7 @@ int main()
 
 	// Here is the loop of the game:
 	while (my_game.mat != true) {
+		cout << "first enter a number and then a character " << endl;
 		while (my_game.turn != true) {
 			my_game.play_white();
 		} 
@@ -44,9 +45,9 @@ int main()
 		cout << my_game;
 		//cout << typeid(*my_game.board[0][0]).name() << endl;
 		//cout << typeid(*my_game.board[1][0]).name() << endl;
-		test++;
+		//test++;
 		//It's the test condition fo this loop:
-		test == 1 ? my_game.mat = true : my_game.mat = false;
+		//test == 5 ? my_game.mat = true : my_game.mat = false;
 	}
 	int s;
 	cout << "save the game?\n" << "Yes [1]. No [0] " << endl;
